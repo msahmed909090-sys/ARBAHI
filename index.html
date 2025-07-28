@@ -1,0 +1,413 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أرباحي بريميوم - مستقبل تجارتك يبدأ اليوم</title>
+    <meta name="description" content="حوّل فوضى الإدارة اليومية إلى أرباح ونمو مع نظام أرباحي بريميوم. الحل الشامل للمبيعات والمخزون والعملاء في مكان واحد.">
+    <link rel="icon" href="logo.jpg">
+    <link rel="shortcut icon" href="logo.jpg" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #4f46e5;
+            --dark-color: #111827;
+            --light-color: #f9fafb;
+            --text-color: #374151;
+            --gray-color: #6b7280;
+            --white-color: #ffffff;
+            --success-color: #10b981;
+            --danger-color: #ef4444;
+            --font-family: 'Cairo', sans-serif;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-family); line-height: 1.7; background-color: var(--light-color); color: var(--text-color); overflow-x: hidden; text-rendering: optimizeLegibility; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .main-header { background: var(--white-color); padding: 1rem 0; position: fixed; top: 0; left: 0; right: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); transition: all 0.3s ease; }
+        .main-nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; text-decoration: none; color: var(--dark-color); font-weight: 700; font-size: 1.5rem; }
+        .logo img { height: 40px; margin-left: 10px; }
+        .nav-links { list-style: none; display: flex; gap: 2rem; }
+        .nav-links a { text-decoration: none; color: var(--text-color); font-weight: 600; transition: color 0.3s ease; position: relative; padding-bottom: 5px; }
+        .nav-links a:hover { color: var(--primary-color); }
+        .nav-links a::after { content: ''; position: absolute; bottom: 0; right: 0; width: 0; height: 2px; background-color: var(--primary-color); transition: width 0.3s ease; }
+        .nav-links a:hover::after { width: 100%; }
+        .hamburger { display: none; cursor: pointer; }
+        .hamburger div { width: 25px; height: 3px; background-color: var(--dark-color); margin: 5px 0; transition: all 0.3s ease; }
+        .btn { display: inline-block; padding: 12px 32px; border-radius: 8px; text-decoration: none; font-weight: 700; transition: all 0.3s ease; border: none; cursor: pointer; font-size: 1rem; }
+        .btn-primary { background-image: linear-gradient(45deg, var(--primary-color), var(--secondary-color)); color: var(--white-color); box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 7px 20px rgba(37, 99, 235, 0.4); }
+        .section-heading { text-align: center; margin-bottom: 4rem; }
+        .section-heading span { display: inline-block; background: -webkit-linear-gradient(45deg, var(--primary-color), var(--secondary-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; font-size: 1.1rem; }
+        .section-heading h2 { font-size: 2.8rem; font-weight: 900; color: var(--dark-color); margin-top: 0.5rem; }
+        section { padding: 100px 0; }
+        .hero { padding-top: 180px; background: linear-gradient(180deg, var(--white-color) 0%, var(--light-color) 100%); }
+        .hero-content { display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+        .hero-text { flex-basis: 50%; }
+        .hero-text h1 { font-size: 3.5rem; font-weight: 900; line-height: 1.2; color: var(--dark-color); margin-bottom: 1.5rem; }
+        .hero-text h1 span { background: -webkit-linear-gradient(45deg, var(--primary-color), var(--secondary-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-text p { font-size: 1.2rem; color: var(--gray-color); margin-bottom: 2rem; max-width: 500px; }
+        .hero-image { flex-basis: 50%; text-align: center; }
+        .hero-image img { max-width: 80%; animation: float 6s ease-in-out infinite; }
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-20px); } 100% { transform: translateY(0px); } }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .feature-card { background: var(--white-color); padding: 2rem; text-align: center; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); transition: all 0.3s ease; }
+        .feature-card:hover { transform: translateY(-10px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .feature-card .icon { font-size: 3rem; margin-bottom: 1.5rem; color: var(--primary-color); }
+        .feature-card h3 { font-size: 1.5rem; font-weight: 700; color: var(--dark-color); margin-bottom: 0.5rem; }
+        .feature-card p { color: var(--gray-color); }
+        .value-prop { background-color: var(--white-color); }
+        .value-prop-content { display: flex; align-items: center; gap: 4rem; }
+        .value-prop-text { flex: 1; }
+        .value-prop-text h2 { font-size: 2.5rem; font-weight: 900; margin-bottom: 1rem; color: var(--dark-color); }
+        .value-prop-text p { font-size: 1.1rem; color: var(--gray-color); margin-bottom: 1.5rem; }
+        .value-prop-list { list-style: none; }
+        .value-prop-list li { margin-bottom: 1rem; font-weight: 600; display: flex; align-items: center; }
+        .value-prop-list li i { color: var(--success-color); margin-left: 10px; font-size: 1.2rem; }
+        .value-prop-image { flex: 1; text-align: center; }
+        .value-prop-image img { width: 80%; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); transition: all 0.3s ease; border: 1px solid #eee; }
+        .gallery-item img:hover { transform: scale(1.05); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .article { background-color: var(--white-color); }
+        .article-content { max-width: 800px; margin: 0 auto; text-align: center; }
+        .article-content h2 { font-size: 2.5rem; font-weight: 900; color: var(--dark-color); margin-bottom: 1.5rem; }
+        .article-content .subtitle { font-size: 1.2rem; color: var(--gray-color); margin-bottom: 2rem; }
+        .article-body { text-align: right; font-size: 1.1rem; line-height: 1.8; }
+        .article-body p { margin-bottom: 1.5rem; }
+        .cta-section { background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)); padding: 80px 0; color: var(--white-color); text-align: center; border-radius: 20px; margin: 100px 0; }
+        .cta-content h2 { font-size: 2.8rem; font-weight: 900; margin-bottom: 1rem; }
+        .cta-content p { font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9; max-width: 600px; margin-right: auto; margin-left: auto; }
+        .cta-content .btn { background: var(--white-color); color: var(--primary-color); padding: 15px 40px; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .cta-content .btn:hover { background-color: var(--light-color); }
+        
+        /* --- Pricing Table Section --- */
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; align-items: center; }
+        .plan-card { background: var(--white-color); border: 1px solid #ddd; border-radius: 12px; padding: 2rem; text-align: center; transition: all 0.3s ease; position: relative; }
+        .plan-card.premium { border: 2px solid var(--primary-color); transform: scale(1.05); box-shadow: 0 10px 40px rgba(37, 99, 235, 0.2); }
+        .plan-card h3 { font-size: 1.5rem; font-weight: 700; color: var(--dark-color); }
+        .plan-card .price { font-size: 2.5rem; font-weight: 900; color: var(--primary-color); margin: 1rem 0; }
+        .plan-card .price span { font-size: 1rem; font-weight: 400; color: var(--gray-color); }
+        .plan-card .description { color: var(--gray-color); font-size: 0.9rem; min-height: 40px; }
+        .plan-card ul { list-style: none; margin: 2rem 0; text-align: right; }
+        .plan-card ul li { margin-bottom: 1rem; display: flex; align-items: center; justify-content: flex-start; }
+        .plan-card ul li .fa-check { color: var(--success-color); }
+        .plan-card ul li .fa-times { color: var(--danger-color); }
+        .plan-card ul li span { margin-right: 10px; }
+        .plan-card .btn { width: 100%; }
+        .badge { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--secondary-color); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; }
+        .feature-category { font-weight: 700; margin-top: 1.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid #eee; text-align: right; color: var(--primary-color); }
+
+
+        .main-footer { background: var(--dark-color); color: var(--light-color); padding: 40px 0; text-align: center; }
+        .footer-content p { margin-bottom: 1rem; }
+        .social-links a { color: var(--light-color); font-size: 1.5rem; margin: 0 10px; transition: color 0.3s ease; }
+        .social-links a:hover { color: var(--primary-color); }
+        .reveal { opacity: 0; transform: translateY(50px); transition: all 1s ease-out; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        @media (max-width: 992px) { .plan-card.premium { transform: scale(1); } }
+        @media (max-width: 768px) {
+            .nav-links { position: fixed; top: 80px; right: -100%; width: 100%; height: calc(100vh - 80px); background: var(--white-color); flex-direction: column; align-items: center; justify-content: center; transition: right 0.4s ease-in-out; }
+            .nav-links.active { right: 0; }
+            .hamburger { display: block; }
+            .hamburger.toggle .line1 { transform: rotate(-45deg) translate(-5px, 6px); }
+            .hamburger.toggle .line2 { opacity: 0; }
+            .hamburger.toggle .line3 { transform: rotate(45deg) translate(-5px, -6px); }
+            .hero-content { flex-direction: column; text-align: center; }
+            .hero-text { order: 2; }
+            .hero-image { order: 1; margin-bottom: 2rem; }
+            .hero-text h1 { font-size: 2.8rem; }
+            .hero-text p { margin-right: auto; margin-left: auto; }
+            .section-heading h2 { font-size: 2.2rem; }
+            .value-prop-content { flex-direction: column; }
+            .value-prop-image { margin-top: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <nav class="main-nav">
+                <a href="#" class="logo"> <img src="logo.jpg" alt="شعار أرباحي بريميوم"> <span>Arbahi - PREMIUM</span> </a>
+                <ul class="nav-links">
+                    <li><a href="#hero">الرئيسية</a></li>
+                    <li><a href="#features">المميزات</a></li>
+                    <li><a href="#pricing-table">الأسعار</a></li> <li><a href="#gallery">معرض الصور</a></li>
+                    <li><a href="#contact">اطلب الآن</a></li>
+                </ul>
+                <div class="hamburger"> <div class="line1"></div> <div class="line2"></div> <div class="line3"></div> </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text reveal">
+                        <h1>مستقبل تجارتك، <span>بضغطة زر.</span></h1>
+                        <p>تعبت من فوضى الدفاتر والحسابات المعقدة؟ نظام أرباحي بريميوم يحول عملك إلى آلة منظمة للأرباح. تحكم كامل في مبيعاتك، مخزونك، وعملائك بسهولة لم تتخيلها.</p>
+                        <a href="#contact" class="btn btn-primary">اطلب عرض سعر الآن</a>
+                    </div>
+                    <div class="hero-image reveal"> <img src="logo.jpg" alt="شعار أرباحي بريميوم"> </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <span>القوة بين يديك</span>
+                    <h2>كل ما تحتاجه للنمو والنجاح</h2>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card reveal">
+                        <div class="icon"><i class="fas fa-cash-register"></i></div>
+                        <h3>نقطة بيع سريعة (CASHIR)</h3>
+                        <p>أصدر الفواتير بسرعة البرق. نظام كاشير مرن يدعم الباركود والبحث السريع لتجربة بيع لا مثيل لها.</p>
+                    </div>
+                    <div class="feature-card reveal">
+                        <div class="icon"><i class="fas fa-warehouse"></i></div>
+                        <h3>إدارة مخزون ذكية</h3>
+                        <p>اعرف كل سلعة في مخزونك. تتبع الكميات، احصل على تنبيهات عند النقص، وقم بالجرد بسهولة تامة.</p>
+                    </div>
+                    <div class="feature-card reveal">
+                        <div class="icon"><i class="fas fa-users"></i></div>
+                        <h3>سجل عملاء متكامل</h3>
+                        <p>ابنِ علاقة قوية مع عملائك. سجل بياناتهم، تتبع مشترياتهم، وقدم لهم أفضل خدمة يستحقونها.</p>
+                    </div>
+                    <div class="feature-card reveal">
+                        <div class="icon"><i class="fas fa-chart-pie"></i></div>
+                        <h3>تقارير أرباح دقيقة</h3>
+                        <p>اتخذ قراراتك بناءً على أرقام حقيقية. تقارير شاملة توضح لك أرباحك ومصروفاتك ومنتجاتك الأكثر مبيعًا.</p>
+                    </div>
+                    <div class="feature-card reveal">
+                        <div class="icon"><i class="fa-solid fa-rotate-right"></i></div>
+                        <h3>إدارة سهلة للمرتجعات</h3>
+                        <p>لمراجعه الفواتير القديمه وارجاع المنتجات</p>
+                    </div>
+                    <div class="feature-card reveal">
+                        <div class="icon"><i class="fa-solid fa-user"></i></div>
+                        <h3>اداره شامله لشئون الموظفين</h3>
+                        <p>يمكنك اداره موظفين متجرك  ورواتبهم ورتبتهم وغيره</p>
+                    </div>
+                    <div class="feature-card reveal">
+                        <div class="icon"><i class="fa-solid fa-truck"></i></div>
+                        <h3>اداره موردون متجرك</h3>
+                        <p>اعرف موردين متجرك و بريدهم الإلكتروني ورقم هواتفهم بسهوله تامه</p>
+                    </div>
+                    <div class="feature-card reveal">
+                        <div class="icon"><i class="fa-solid fa-building-columns"></i></div>
+                        <h3>اداره للخزائن والبنوك</h3>
+                        <p>يمكنك اداره حسابتك البنكيه و الخزائن الماليه</p>
+                    </div>
+                    <div class="feature-card reveal">
+                        <div class="icon"><i class="fa-solid fa-money-bill-wave"></i></div>
+                        <h3>تحكم كامل في مصروفاتك</h3>
+                        <p>لإداره مصروفاتك الشهريه وغيره</p>
+                    </div>
+                    <div class="feature-card reveal">
+                        <div class="icon"><i class="fa-solid fa-chart-simple"></i></div>
+                        <h3>كل هذا واكثر بكثير ..</h3>
+                        <p>المزيد من المميزات داخل التطبيق</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing-table" class="pricing-table">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <span>خطط تناسب الجميع</span>
+                    <h2>اختر الباقة التي تناسب حجم تجارتك</h2>
+                </div>
+                <div class="pricing-grid">
+                    <div class="plan-card reveal">
+                        <h3>Arbahi DEMO</h3>
+                        <div class="price">سعر رمزي</div>
+                        <p class="description">للبداية السريعة والمنظمة بدون إنترنت. بياناتك على جهازك فقط.</p>
+                        <a href="#contact" class="btn btn-primary" style="background: var(--gray-color);">اطلب هذه النسخة</a>
+                        <ul>
+                            <li class="feature-category">الأساسيات</li>
+                            <li><i class="fas fa-check"></i><span>إدارة المنتجات والمخزون</span></li>
+                            <li><i class="fas fa-check"></i><span>إدارة العملاء والديون</span></li>
+                            <li><i class="fas fa-check"></i><span>إنشاء فواتير أساسية</span></li>
+                            <li><i class="fas fa-check"></i><span>يعمل بدون انترنت</span></li>
+                            <li class="feature-category">الإدارة المتقدمة</li>
+                            <li><i class="fas fa-times"></i><span>تقارير ورسوم بيانية</span></li>
+                            <li><i class="fas fa-times"></i><span>إدارة المصروفات</span></li>
+                            <li><i class="fas fa-times"></i><span>إدارة الموظفين والمهام</span></li>
+                            <li class="feature-category">مميزات Premium الحصرية</li>
+                            <li><i class="fas fa-times"></i><span>تخزين سحابي آمن</span></li>
+                            <li><i class="fas fa-times"></i><span>مزامنة لحظية بين الأجهزة</span></li>
+                            <li><i class="fas fa-times"></i><span>أدوات نسخ احتياطي وتصدير</span></li>
+                        </ul>
+                    </div>
+                    <div class="plan-card premium reveal">
+                        <div class="badge">الأكثر احترافية</div>
+                        <h3>Arbahi PREMIUM</h3>
+                        <div class="price">700 ج.م<span>/ شهريًا</span></div>
+                        <p class="description">الحل الكامل للتحكم المطلق والأمان التام. تجارتك معك في كل مكان مع سعر مميز لفتره محدوده.</p>
+                        <a href="#contact" class="btn btn-primary">اطلب هذه النسخة</a>
+                        <ul>
+                            <li class="feature-category">الأساسيات</li>
+                            <li><i class="fas fa-check"></i><span>إدارة المنتجات والمخزون</span></li>
+                            <li><i class="fas fa-check"></i><span>إدارة العملاء والديون</span></li>
+                            <li><i class="fas fa-check"></i><span>إنشاء فواتير احترافية</span></li>
+                            <li><i class="fas fa-check"></i><span>يعمل بوجود انترنت</span></li>
+                            <li class="feature-category">الإدارة المتقدمة</li>
+                            <li><i class="fas fa-check"></i><span>تقارير ورسوم بيانية تفصيلية</span></li>
+                            <li><i class="fas fa-check"></i><span>إدارة المصروفات والخزائن والبنوك</span></li>
+                            <li><i class="fas fa-check"></i><span>إدارة الموظفين والرواتب والمهام</span></li>
+                            <li><i class="fas fa-check"></i><span>إدارة الموردين والمرتجعات</span></li>
+                            <li><i class="fas fa-check"></i><span>إدارة الأصول الثابتة</span></li>
+                            <li class="feature-category">مميزات Premium الحصرية</li>
+                            <li><i class="fas fa-check"></i><span>تخزين سحابي آمن (سيرفرات جوجل)</span></li>
+                            <li><i class="fas fa-check"></i><span>مزامنة لحظية بين الأجهزة (كمبيوتر وموبايل)</span></li>
+                            <li><i class="fas fa-check"></i><span>أدوات نسخ احتياطي وتصدير البيانات</span></li>
+                            <li><i class="fas fa-check"></i><span>الوضع المظلم و تخصيص الإعدادات</span></li>
+                        </ul>
+                    </div>
+                    <div class="plan-card reveal">
+                        <h3>Arbahi PAID</h3>
+                        <div class="price">اسأل عن السعر</div>
+                        <p class="description">للنمو والتوسع بأدوات أقوى. بياناتك على جهازك فقط.</p>
+                        <a href="#contact" class="btn btn-primary" style="background: var(--gray-color);">اطلب هذه النسخة</a>
+                         <ul>
+                            <li class="feature-category">الأساسيات</li>
+                            <li><i class="fas fa-check"></i><span>إدارة المنتجات والمخزون</span></li>
+                            <li><i class="fas fa-check"></i><span>إدارة العملاء والديون</span></li>
+                            <li><i class="fas fa-check"></i><span>إنشاء فواتير احترافية</span></li>
+                             <li><i class="fas fa-check"></i><span>يعمل بدون انترنت</span></li>
+                            <li class="feature-category">الإدارة المتقدمة</li>
+                            <li><i class="fas fa-check"></i><span>تقارير ورسوم بيانية</span></li>
+                            <li><i class="fas fa-check"></i><span>إدارة المصروفات</span></li>
+                            <li><i class="fas fa-check"></i><span>إدارة الموظفين والمهام</span></li>
+                            <li class="feature-category">مميزات Premium الحصرية</li>
+                            <li><i class="fas fa-times"></i><span>تخزين سحابي آمن</span></li>
+                            <li><i class="fas fa-times"></i><span>مزامنة لحظية بين الأجهزة</span></li>
+                            <li><i class="fas fa-times"></i><span>أدوات نسخ احتياطي وتصدير</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="gallery">
+            <div class="container">
+                <div class="section-heading reveal"> <span>نظرة عن قرب</span> <h2>شاهد قوة "أرباحي" بنفسك</h2> </div>
+                <div class="gallery-grid">
+                    <div class="gallery-item reveal"> <img src="4.PNG" alt="شاشة لوحة التحكم"> </div>
+                    <div class="gallery-item reveal"> <img src="1.PNG" alt="شاشة نقطة البيع"> </div>
+                    <div class="gallery-item reveal"> <img src="3.PNG" alt="شاشة الفواتير"> </div>
+                     <div class="gallery-item reveal"> <img src="2.PNG" alt="شاشة تسجيل الدخول"> </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="article" class="article">
+            <div class="container">
+                <div class="article-content reveal">
+                     <h2>قصة "أرباحي": من رحم المعاناة وُلد الحل</h2>
+                     <p class="subtitle">لم نكن مجرد مبرمجين، بل كنا نراقب أصحاب المتاجر من حولنا... ولهذا صنعنا الحل.</p>
+                     <div class="article-body">
+                         <p>شاهدنا أصحاب المحلات التجارية والمطاعم الصغيرة، أصدقائنا وجيراننا، يغرقون في بحر من الأوراق المتناثرة، والدفاتر التي لا تنتهي. رأينا الحيرة في أعينهم وهم يحاولون معرفة أرباحهم الحقيقية، والقلق من نفاذ سلعة مطلوبة فجأة من المخزون. لقد كانت معاناتهم هي مصدر إلهامنا.</p>
+                         <p>لهذا السبب، لم نصنع مجرد برنامج، بل صممنا أداة تمنحك راحة البال. "أرباحي بريميوم" هو خلاصة خبرتنا التقنية وفهمنا العميق لاحتياجاتك اليومية. كل ميزة فيه صُممت لتحل مشكلة حقيقية تواجهك، لتعيد لك أغلى ما تملك: **وقتك**، و**السيطرة على تجارتك**.</p>
+                     </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact">
+            <div class="container">
+                <div class="cta-section reveal">
+                    <div class="cta-content">
+                        <h2>هل أنت مستعد لنقل تجارتك للمستوى التالي؟</h2>
+                        <p>لا تنتظر أكثر. استثمر في مستقبل عملك اليوم. تواصل معنا للحصول على عرض سعر مخصص وخطة تناسب احتياجاتك تمامًا.</p>
+                        <a href="https://wa.me/201557160730" class="btn"><i class="fab fa-whatsapp"></i> تواصل معنا عبر واتساب</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Arbahi Premium. جميع الحقوق محفوظة.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('toggle');
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('toggle');
+            }
+        });
+    });
+    
+    const links = document.querySelectorAll('a[href^="#"]');
+    for (const link of links) {
+        link.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href");
+            const targetElement = document.querySelector(targetId);
+            if(targetElement) {
+                const headerOffset = 80;
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth"
+                });
+            }
+        });
+    }
+
+    const revealElements = document.querySelectorAll('.reveal');
+    
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { root: null, threshold: 0.1 });
+
+    revealElements.forEach(el => {
+        revealObserver.observe(el);
+    });
+});
+</script>
+
+</body>
+</html>
